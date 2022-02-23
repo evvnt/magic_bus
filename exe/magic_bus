@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "bundler/setup"
+require "magic_bus"
+system("shoryuken -q #{MagicBus.sqs_queue} -r #{File.expand_path("../lib/magic_bus/worker.rb", __dir__)}")
