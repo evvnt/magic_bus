@@ -1,4 +1,4 @@
-name: Release
+name: Semantic Release
 on:
   push:
     branches: [ main ]
@@ -10,17 +10,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
+      - name: Setup Ruby
+          uses: ruby/setup-ruby@v1
+          with:
+            bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v2
         id: semantic
         with:
-          semantic_version: 16
           extra_plugins: |
             @semantic-release/git
             @semantic-release/changelog            
             @semantic-release/github
-          branches: |
-            ['main']
+          dry_run: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
