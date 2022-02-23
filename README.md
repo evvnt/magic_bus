@@ -24,7 +24,13 @@ Or install it yourself as:
     $ gem install magic_bus
 
 ## Configuration
-Setup the following env variables:
+
+As a developer, you will need your own event bus built using the 
+[event-bus-provision](https://github.com/evvnt/CloudTools/actions/workflows/event-bus-provision.yml) Github Action.
+
+Suggestion use your name as the bus_name.
+
+Setup the following env variables using the output from the above action:
 ```
 export MAGIC_BUS_BUS_NAME=<bus_name>
 export MAGIC_BUS_APP_NAME=<app_name>
