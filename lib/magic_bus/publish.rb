@@ -16,16 +16,24 @@ module MagicBus
     # @param group_id Optional. The message_group_id to use for the sns queue.
     #                 Events are delivered in fifo order within a given message_group_id.
     def publish(event:, message:, group_id: nil)
+      attributes = build_message_attributes(app_name, event)
       sns.publish({
                     target_arn: sns_arn,
                     message: message.to_json,
-                    message_attributes: build_message_attributes(app_name, event),
+                    message_attributes: attributes,
                     message_group_id: group_id || "root",
-                    message_deduplication_id: SecureRandom.hex(32)
+                    message_deduplication_id: deduplicate_sha(message, attributes)
                   })
     end
 
     private
+
+    def deduplicate_sha(message, attributes)
+      sha = Digest::SHA2.new(256)
+      sha << message.to_s
+      sha << attributes.to_s
+      sha.hexdigest
+    end
 
     def build_message_attributes(app_name, event)
       {
