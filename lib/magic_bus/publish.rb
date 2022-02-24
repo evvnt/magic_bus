@@ -3,7 +3,7 @@
 require "json"
 
 # The MagicBus allows events to be delivered between applications.
-# To publish an message use the #publish method.
+# To publish a message use the #publish method.
 module MagicBus
   class << self
     attr_accessor :aws_account_id, :aws_region, :bus_name, :app_name, :sns_arn, :sqs_queue, :sns
