@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/evvnt/magic_bus/compare/v1.0.0...v1.0.1) (2022-02-24)
+
+
+### Bug Fixes
+
+* Added deduplication - sha hash of message and attributes ([c1ce36b](https://github.com/evvnt/magic_bus/commit/c1ce36bdcc38f1ca0a4761a936f3a32b8bc88b6d))
+
 # 1.0.0 (2022-02-23)
 
 
