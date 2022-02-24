@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/evvnt/magic_bus/compare/v1.0.1...v1.0.2) (2022-02-24)
+
+
+### Bug Fixes
+
+* downgraded ruby required version to 2.5 ([d136d90](https://github.com/evvnt/magic_bus/commit/d136d90f3bcb7b03061a88dff453d4b8710b0a8e))
+
 ## [1.0.1](https://github.com/evvnt/magic_bus/compare/v1.0.0...v1.0.1) (2022-02-24)
 
 
