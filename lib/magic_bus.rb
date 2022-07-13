@@ -9,3 +9,5 @@ module MagicBus
 end
 require_relative "magic_bus/configure"
 require_relative "magic_bus/publish"
+require_relative "magic_bus/tracking"
+require_relative "magic_bus/railtie" if defined?(Rails)

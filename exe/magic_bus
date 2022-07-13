@@ -3,4 +3,6 @@
 
 require "bundler/setup"
 require "magic_bus"
-system("shoryuken -q #{MagicBus.sqs_queue} -r #{File.expand_path("../lib/magic_bus/worker.rb", __dir__)}")
+cmd = "shoryuken -q #{MagicBus.sqs_queue} -r #{File.expand_path("../lib/magic_bus/worker.rb", __dir__)} -R"
+puts cmd
+system(cmd)

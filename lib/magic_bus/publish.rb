@@ -6,13 +6,12 @@ require "json"
 # To publish a message use the #publish method.
 module MagicBus
   class << self
-    attr_accessor :aws_account_id, :aws_region, :bus_name, :app_name, :sns_arn, :sqs_queue, :sns
-
     # @param event    The event that is being published. This should be a descriptive event name in the past tense.
     #                 It will be used by the receiving application to load the appropriate handling code.
     #                 (Each event gets its own handler.)
     #                 Example: "EventUpdated"
-    # @param message  The message that fully describes the change as a hash.
+    # @param message  The message that fully describes the changes. This is an array of change records
+    #                 plus augmented data
     # @param group_id Optional. The message_group_id to use for the sns queue.
     #                 Events are delivered in fifo order within a given message_group_id.
     def publish(event:, message:, group_id: nil)

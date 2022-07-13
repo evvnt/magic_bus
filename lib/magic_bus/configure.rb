@@ -7,11 +7,25 @@ require "shoryuken"
 # To publish an message use the #publish method.
 module MagicBus
   class << self
-    def configure!
+    attr_accessor :aws_account_id, :aws_region, :bus_name, :app_name, :sns_arn, :sqs_queue, :sns
+
+    def configure!(suppress_banner: false)
+      banner unless suppress_banner
       check_env
       set_instance_variables
       configure_sns
       configure_shoryuken
+    end
+
+    private
+
+    def banner
+      return unless $PROGRAM_NAME =~ /magic_bus/
+
+      banner = File.read(File.expand_path("../../img/ascii-bus.txt", __dir__))
+      puts banner
+      puts "Every day I get in the queue (Too much, Magic Bus)"
+      puts "To get on the bus that takes me to you (Too much, Magic Bus)"
     end
 
     def check_env
@@ -54,4 +68,4 @@ module MagicBus
     end
   end
 end
-MagicBus.configure! unless ENV["RACK_ENV"] == "test"
+MagicBus.configure! unless defined?(Rails) || ENV["RACK_ENV"] == "test"

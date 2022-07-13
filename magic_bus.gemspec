@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description   = "This gem drives the (magic) Event Bus between two applications."
   spec.homepage      = "https://github.com/evvnt/magic_bus"
   spec.license       = "MIT"
-  spec.required_ruby_version = ">= 2.5.0"
+  spec.required_ruby_version = ">= 2.7.6"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/evvnt/magic_bus"
@@ -32,6 +32,10 @@ Gem::Specification.new do |spec|
   spec.add_dependency "aws-sdk-sqs", "~>1.50.0"
   spec.add_dependency "shoryuken", "~>5.3.2"
 
+  spec.add_development_dependency "activerecord", ">=5.2"
+  spec.add_development_dependency "railties", ">=5.2"
+  spec.add_development_dependency "rubocop", ">=1.25"
+  spec.add_development_dependency "sqlite3-ruby", ">=1.3"
   # For more information and examples about making a new gem, checkout our
   # guide at: https://bundler.io/guides/creating_gem.html
   spec.metadata["rubygems_mfa_required"] = "true"
