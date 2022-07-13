@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/evvnt/magic_bus/compare/v1.0.2...v1.0.3) (2022-07-13)
+
+
+### Bug Fixes
+
+* Introduced rides_magic_bus model class method. ([5cc25c0](https://github.com/evvnt/magic_bus/commit/5cc25c0d3ca6b18c69d8512c105be4f8bd7f4089))
+
 ## [1.0.2](https://github.com/evvnt/magic_bus/compare/v1.0.1...v1.0.2) (2022-02-24)
 
 
