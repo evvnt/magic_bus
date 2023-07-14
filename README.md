@@ -43,7 +43,7 @@ export MAGIC_BUS_AWS_REGION=us-east-2
 ## Publishing Messages
 
 ```
-EventBus.publish(event: "MagicBus::TestEvent", message: {test: "message"})
+MagicBus.publish(event: "MagicBus::TestEvent", message: {test: "message"})
 ```
 
 ## Receiving Messages
@@ -51,6 +51,17 @@ To Receive messages you need to start the `magic_bus` process.
 It in turns starts up a single shoryuken worker that processes messages.
 Each message received needs to have a class that matches the event.
 When that event occurs the class is instantiated and its process method is called with the message.
+
+For example, we can process the test event above like so:
+```ruby
+module MagicBus
+  class TestEvent
+    def perform(_sqs_msg, msg)
+      # Take action - msg = {test: "message"} in this case
+    end
+  end
+end
+```
 
 ## Development
 
