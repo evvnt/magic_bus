@@ -24,9 +24,10 @@ module MagicBus
     private
 
     def class_from_string(str)
-      str.split("::").inject(Object) do |mod, class_name|
-        mod.const_get(class_name)
-      end
+      arr = str.split("::")
+      class_name = arr.pop
+      mod = arr.join('::').constantize || Object
+      mod.const_get(class_name)
     end
   end
 end
