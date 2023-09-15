@@ -14,14 +14,17 @@ module MagicBus
     #                 plus augmented data
     # @param group_id Optional. The message_group_id to use for the sns queue.
     #                 Events are delivered in fifo order within a given message_group_id.
-    def publish(event:, message:, group_id: nil)
+    # @param deduplication_id Optional. The deduplication_id for the message
+    #                 This will be created based on the content of the message if not supplied. Passing in a
+    #                 deduplication_id is useful for debugging if you need to resend a duplicate message immediately
+    def publish(event:, message:, group_id: nil, deduplication_id: nil)
       attributes = build_message_attributes(app_name, event)
       sns.publish({
                     target_arn: sns_arn,
                     message: message.to_json,
                     message_attributes: attributes,
                     message_group_id: group_id || "root",
-                    message_deduplication_id: deduplicate_sha(message, attributes)
+                    message_deduplication_id: deduplication_id || deduplicate_sha(message, attributes)
                   })
     end
 
