@@ -63,8 +63,8 @@ module MagicBus
         max_number_of_messages: 10
       }
       Shoryuken.sqs_client = Aws::SQS::Client.new(region: MagicBus.aws_region,
-                                                  access_key_id: ENV["EVENT_BUS_AWS_ACCESS_KEY_ID"],
-                                                  secret_access_key: ENV["EVENT_BUS_AWS_SECRET_ACCESS_KEY"])
+                                                  access_key_id: ENV["MAGIC_BUS_AWS_ACCESS_KEY_ID"],
+                                                  secret_access_key: ENV["MAGIC_BUS_AWS_SECRET_ACCESS_KEY"])
     end
   end
 end
