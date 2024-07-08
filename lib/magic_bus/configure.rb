@@ -15,6 +15,7 @@ module MagicBus
       set_instance_variables
       configure_sns
       configure_shoryuken
+      print_env unless suppress_banner
     end
 
     private
@@ -26,6 +27,13 @@ module MagicBus
       puts banner
       puts "Every day I get in the queue (Too much, Magic Bus)"
       puts "To get on the bus that takes me to you (Too much, Magic Bus)"
+    end
+
+    def print_env
+      puts "MagicBus.aws_account_id = #{MagicBus.aws_account_id}"
+      puts "MagicBus.aws_region = #{MagicBus.aws_region}"
+      puts "MagicBus.bus_name = #{MagicBus.bus_name}"
+      puts "MagicBus.app_name = #{MagicBus.app_name}"
     end
 
     def check_env

@@ -14,6 +14,7 @@ module MagicBus
     shoryuken_options queue: MagicBus.sqs_queue, auto_delete: true
 
     def perform(sqs_msg, message)
+      puts "perform: #{sqs_msg.inspect}, #{message.inspect}"
       processor = class_from_string(sqs_msg.message_attributes["event"]["string_value"])
       processor_instance = processor.new
       options = processor_instance.respond_to?(:object_class) ? { object_class: processor_instance.object_class } : {}
