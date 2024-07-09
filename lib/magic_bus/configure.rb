@@ -60,7 +60,7 @@ module MagicBus
 
     def configure_shoryuken
       Shoryuken.sqs_client_receive_message_opts = {
-        max_number_of_messages: ENV["MAGIC_BUS_RECEIVE_MSG_COUNT"] || 1
+        max_number_of_messages: ENV.fetch("MAGIC_BUS_RECEIVE_MSG_COUNT", 1).to_i
       }
       Shoryuken.sqs_client = Aws::SQS::Client.new(region: MagicBus.aws_region,
                                                   access_key_id: ENV["MAGIC_BUS_AWS_ACCESS_KEY_ID"],

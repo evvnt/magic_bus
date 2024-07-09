@@ -28,9 +28,9 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   # Uncomment to register a new dependency of your gem
-  spec.add_dependency "aws-sdk-sns", "~>1.52.0"
-  spec.add_dependency "aws-sdk-sqs", "~>1.50.0"
-  spec.add_dependency "shoryuken", "~>5.3.2"
+  spec.add_dependency "shoryuken", "~>6.2.0"
+  spec.add_dependency "aws-sdk-sns", "~>1.80.0"
+  spec.add_dependency "aws-sdk-sqs", "~>1.80.0"
 
   spec.add_development_dependency "activerecord", ">=5.2"
   spec.add_development_dependency "railties", ">=5.2"
